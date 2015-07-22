@@ -1,0 +1,54 @@
+<script type="text/javascript">
+    $(document).ready(function () {
+        /* Маска на поле Телефон */
+        $("input#phone").mask("+7 (999) 999-99-99");
+
+        /* Активируется датапикер на поле Дата рождения */
+        $('#datetimepicker2').datetimepicker({language: 'ru', format: 'DD.MM.YYYY', pickTime: false});
+    });
+</script>
+
+<%= render 'partial/navbar' %>
+
+<div class="container-fluid">
+  <div class="row">
+    <%= render('partial/sidebar', menu: {active: "пользователи"}) %>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      <ul class="nav nav-tabs">
+        <li><%= link_to 'все пользователи', users_path %></li>
+        <li><%= link_to 'добавить пользователя', new_user_path %></li>
+        <li class="active"><a href="#">Обновление данных</a></li>
+      </ul>
+      <br/>
+
+      <div class="col-lg-4">
+        <%= form_for(@user, :html => {onsubmit: "return checkFealds()"}) do |f| %>
+            <% if @user.errors.any? %>
+                <div id="error_explanation">
+
+                  <% @user.errors.full_messages.each do |msg| %>
+                      <div class="alert alert-warning" role="alert"><%= msg %></div>
+                  <% end %>
+                </div>
+            <% end %>
+            <div id="firstName" class="form-group"><%= f.text_field :firstName, class: "form-control", placeholder: "Имя", maxlength: 30 %></div>
+            <div id="lastName" class="form-group"><%= f.text_field :lastName, class: "form-control", placeholder: "Фамилия", maxlength: 30 %></div>
+            <div id="phone" class="form-group"><%= f.text_field :phone, class: "form-control", placeholder: "Телефон", id: "phone", maxlength: 30 %></div>
+            <div id="login" class="form-group"><%= f.text_field :login, class: "form-control", placeholder: "Логин", maxlength: 30 %></div>
+            <div id="password" class="form-group"><%= f.text_field :password, class: "form-control", placeholder: "Пароль", maxlength: 30 %></div>
+            <div id="birthday" class="form-group"><%= f.text_field :birthday, class: "form-control", placeholder: "Дата рождения: 16.08.1977", id: "datetimepicker2", maxlength: 10 %></div>
+            <p> <%= f.select :role, [['Администратор', 'admin'], ['Пользователь', 'user']], {}, class: "form-control" %></p>
+            <br/>
+
+            <%= f.submit 'Обновить данные', class: "btn btn-primary" %> <%= link_to 'Отмена', '/users', method: "get", type: "button", class: "btn btn-default" %>
+
+
+        <% end %>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+

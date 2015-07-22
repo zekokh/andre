@@ -1,0 +1,48 @@
+<script type="text/javascript">
+    $(document).ready(function () {
+        /* Маска на поле Телефон */
+        $("input#phone").mask("+7 (999) 999-99-99");
+    });
+</script>
+
+<%= render 'partial/navbar' %>
+
+<div class="container-fluid">
+  <div class="row">
+    <%= render('partial/sidebar', menu: {active: "поставщики"}) %>
+
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      <ul class="nav nav-tabs">
+        <li><%= link_to 'все поставщики', providers_path %></li>
+        <li class="active"><%= link_to 'добавить поставщика', new_provider_path %></li>
+      </ul>
+      <div class="col-lg-6">
+        <br/>
+        <%= form_for(@provider, :html => {onsubmit: "return checkFealdsProvider()"}) do |f| %>
+            <% if @provider.errors.any? %>
+                <div id="error_explanation">
+                  <h2><%= pluralize(@provider.errors.count, "error") %> prohibited this provider from being saved:</h2>
+
+                  <ul>
+                    <% @provider.errors.full_messages.each do |msg| %>
+                        <li><%= msg %></li>
+                    <% end %>
+                  </ul>
+                </div>
+            <% end %>
+
+            <div id="name" class="form-group"><%= f.text_field :name, class: "form-control", placeholder: "Название*", maxlength: 100 %></div>
+            <div id="contact_name" class="form-group"><%= f.text_field :contact_name, class: "form-control", placeholder: "Контактное лицо*", maxlength: 100 %></div>
+            <div id="phone" class="form-group"><%= f.text_field :phone, class: "form-control", placeholder: "Телефон*", id: "phone" %></div>
+            <div id="address" class="form-group"><%= f.text_field :address, class: "form-control", placeholder: "Адрес*", maxlength: 100 %></div>
+            <div id="comments" class="form-group"><%= f.text_area :comments, class: "form-control", placeholder: "Комментарий", maxlength: 1024, rows: 5 %></div>
+
+
+            <%= f.submit 'Добавить поставщика', class: "btn btn-primary" %> <%= link_to 'Отмена', providers_path, type: "button", class: "btn btn-default" %>
+
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>

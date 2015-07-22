@@ -1,0 +1,52 @@
+<%= render 'partial/navbar' %>
+
+<div class="container-fluid">
+  <div class="row">
+    <%= render('partial/sidebar', menu: {active: "поставщики"}) %>
+
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      <ul class="nav nav-tabs">
+        <li class="active"><%= link_to 'все поставщики', providers_path %></li>
+        <li><%= link_to 'добавить поставщика', new_provider_path %></li>
+      </ul>
+      <br/>
+      <% if @providers.length > 0 %>
+          <table class="table table-hover">
+            <thead>
+            <tr>
+              <th>Название</th>
+              <th>Контактное лицо</th>
+              <th>Телефон</th>
+              <th>Адрес</th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <% @providers.each do |provider| %>
+                <tr>
+                  <td><%= link_to provider.name, provider %></td>
+                  <td><%= provider.contact_name %></td>
+                  <td><%= provider.phone %></td>
+                  <td><%= provider.address %></td>
+
+                  <td><%= link_to 'Изменить', edit_provider_path(provider) %></td>
+                  <td><%= link_to 'Удалить', provider, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+                </tr>
+            <% end %>
+            </tbody>
+          </table>
+      <% else %>
+          <div class="well well-lg">В базе нет поставщиков! <br/>
+            Для того что бы добавить поставщика воспользуйтесь
+            вкладкой <%= link_to 'Добавить поставщика', new_provider_path %>.
+          </div>
+      <% end %>
+
+      <br>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Система автоматизации</title>
+  <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag "dashboard", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "bootstrap", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "maskedinput.min", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag "bootstrap-datetimepicker.min", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "moment-with-locales.min", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "bootstrap-datetimepicker.min", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+
+  <script type="text/javascript">
+
+      /* Проверка на пустоту полей для заполнения пользователя */
+      function checkFealdsUser() {
+          var flag = true;
+
+          var firstName = $('#user_firstName').val().replace(/\s+/g, '');
+          var lastName = $('#user_lastName').val().replace(/\s+/g, '');
+          var phone = $('input#phone').val().replace(/\s+/g, '');
+          var login = $('#user_login').val().replace(/\s+/g, '');
+          var password = $('#user_password').val().replace(/\s+/g, '');
+          var birthday = $('#datetimepicker2').val().replace(/\s+/g, '');
+
+          /* Имя */
+          if (firstName.length == 0) {
+              $('div#firstName').attr('class', 'form-group has-error');
+              $('#user_firstName').val("")
+              flag = false;
+          } else {
+              $('div#firstName').attr('class', 'form-group');
+              if (flag == false) {
+                  flag = false;
+              } else {
+                  flag = true;
+              }
+          }
+
+          /* Фамилия */
+          if (lastName.length == 0) {
+              $('div#lastName').attr('class', 'form-group has-error');
+              $('#user_lastName').val("")
+              flag = false;
+          } else {
+              $('div#lastName').attr('class', 'form-group');
+              if (flag == false) {
+                  flag = false;
+              } else {
+                  flag = true;
+              }
+          }
+
+          /* Телефон */
+          if (phone.length == 0) {
+              $('div#phone').attr('class', 'form-group has-error');
+              $('#phone').val("")
+              flag = false;
+          } else {
+              $('div#phone').attr('class', 'form-group');
+              if (flag == false) {
+                  flag = false;
+              } else {
+                  flag = true;
+              }
+          }
+
+          /* Логин */
+          if (login.length == 0) {
+              $('div#login').attr('class', 'form-group has-error');
+              $('#user_login').val("")
+              flag = false;
+          } else {
+              $('div#login').attr('class', 'form-group');
+              if (flag == false) {
+                  flag = false;
+              } else {
+                  flag = true;
+              }
+          }
+
+          /* Парроль */
+          if (password.length == 0) {
+              $('div#password').attr('class', 'form-group has-error');
+              $('#user_password').val("")
+              flag = false;
+          } else {
+              $('div#password').attr('class', 'form-group');
+              if (flag == false) {
+                  flag = false;
+              } else {
+                  flag = true;
+              }
+          }
+
+          /* Дата рождения */
+          if (birthday.length == 0) {
+              $('div#birthday').attr('class', 'form-group has-error');
+              $('#datetimepicker2').val("")
+              flag = false;
+          } else {
+              $('div#birthday').attr('class', 'form-group');
+              if (flag == false) {
+                  flag = false;
+              } else {
+                  flag = true;
+              }
+          }
+
+          return flag;
+      }
+
+
+      /* Проверка на пустоту полей для заполнения поставщика */
+      function checkFealdsProvider() {
+          var flag = true;
+
+          var name = $('#provider_name').val().replace(/\s+/g, '');
+          var address = $('#provider_address').val().replace(/\s+/g, '');
+          var phone = $('input#phone').val().replace(/\s+/g, '');
+          var contact_name = $('#provider_contact_name').val().replace(/\s+/g, '');
+
+
+          /* Название */
+          if (name.length == 0) {
+              $('div#name').attr('class', 'form-group has-error');
+              $('#provider_name').val("")
+              flag = false;
+          } else {
+              $('div#name').attr('class', 'form-group');
+              if (flag == false) {
+                  flag = false;
+              } else {
+                  flag = true;
+              }
+          }
+
+          /* Адрес */
+          if (address.length == 0) {
+              $('div#address').attr('class', 'form-group has-error');
+              $('#provider_address').val("")
+              flag = false;
+          } else {
+              $('div#address').attr('class', 'form-group');
+              if (flag == false) {
+                  flag = false;
+              } else {
+                  flag = true;
+              }
+          }
+
+          /* Телефон */
+          if (phone.length == 0) {
+              $('div#phone').attr('class', 'form-group has-error');
+              $('#phone').val("")
+              flag = false;
+          } else {
+              $('div#phone').attr('class', 'form-group');
+              if (flag == false) {
+                  flag = false;
+              } else {
+                  flag = true;
+              }
+          }
+
+          /* Контактное лицо */
+          if (contact_name.length == 0) {
+              $('div#contact_name').attr('class', 'form-group has-error');
+              $('#provider_contact_name').val("")
+              flag = false;
+          } else {
+              $('div#contact_name').attr('class', 'form-group');
+              if (flag == false) {
+                  flag = false;
+              } else {
+                  flag = true;
+              }
+          }
+
+
+          return flag;
+      }
+
+
+      /* Проверка на пустоту полей для заполнения партнер */
+      function checkFealdsPartner() {
+          var flag = true;
+
+          var name = $('#partner_name').val().replace(/\s+/g, '');
+          var address = $('#partner_address').val().replace(/\s+/g, '');
+          var phone = $('input#phone').val().replace(/\s+/g, '');
+          var contact_name = $('#partner_contact_name').val().replace(/\s+/g, '');
+
+
+          /* Название */
+          if (name.length == 0) {
+              $('div#name').attr('class', 'form-group has-error');
+              $('#partner_name').val("")
+              flag = false;
+          } else {
+              $('div#name').attr('class', 'form-group');
+              if (flag == false) {
+                  flag = false;
+              } else {
+                  flag = true;
+              }
+          }
+
+          /* Адрес */
+          if (address.length == 0) {
+              $('div#address').attr('class', 'form-group has-error');
+              $('#partner_address').val("")
+              flag = false;
+          } else {
+              $('div#address').attr('class', 'form-group');
+              if (flag == false) {
+                  flag = false;
+              } else {
+                  flag = true;
+              }
+          }
+
+          /* Телефон */
+          if (phone.length == 0) {
+              $('div#phone').attr('class', 'form-group has-error');
+              $('#phone').val("")
+              flag = false;
+          } else {
+              $('div#phone').attr('class', 'form-group');
+              if (flag == false) {
+                  flag = false;
+              } else {
+                  flag = true;
+              }
+          }
+
+          /* Контактное лицо */
+          if (contact_name.length == 0) {
+              $('div#contact_name').attr('class', 'form-group has-error');
+              $('#partner_contact_name').val("")
+              flag = false;
+          } else {
+              $('div#contact_name').attr('class', 'form-group');
+              if (flag == false) {
+                  flag = false;
+              } else {
+                  flag = true;
+              }
+          }
+
+          return flag;
+      }
+  </script>
+
+</head>
+<body>
+
+<%= yield %>
+
+</body>
+</html>

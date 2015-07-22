@@ -1,0 +1,67 @@
+<%= render 'partial/navbar' %>
+
+<div class="container-fluid">
+  <div class="row">
+    <%= render('partial/sidebar', menu: {active: "пользователи"}) %>
+
+    <!--
+    <ol class="breadcrumb">
+      <li><a href="#">пользователи</a></li>
+      <li class="active">список пользователей</li>
+    </ol>
+
+
+    <div class="col-lg-3">
+
+      <div class="list-group">
+        <a href="/users" class="list-group-item active">Все пользователи</a>
+        <%= link_to 'Добавить пользоватлея', new_user_path, class: "list-group-item" %>
+      </div>
+
+    </div>
+-->
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      <ul class="nav nav-tabs">
+        <li class="active"><%= link_to 'все пользователи', users_path %></li>
+        <li><%= link_to 'добавить пользователя', new_user_path %></li>
+      </ul>
+      <br/>
+      <table class="table table-hover">
+
+        <thead>
+        <tr>
+          <th>ФИО</th>
+          <th>Логин</th>
+          <th>Телефон</th>
+          <th>Дата рождения</th>
+          <th>Роль</th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <% @users.each do |user| %>
+            <tr>
+              <% fio = user.firstName + " "+ user.lastName %>
+              <td><%= link_to fio, user %></td>
+              <td><%= user.login %></td>
+              <td><%= user.phone %></td>
+              <td><%= user.birthday %></td>
+              <td><%= user.role %></td>
+              <td><%= link_to 'Изменить', edit_user_path(user) %></td>
+              <td><%= link_to 'Удалить', user, method: :delete, data: {confirm: 'Вы уверены?'} %></td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+
+      <br>
+
+      <!-- <%= button_to 'Добавить пользователя', new_user_path, method: "get", type: "button", class: "btn btn-primary" %> -->
+
+    </div>
+  </div>
+</div>
+</div>

@@ -1,0 +1,49 @@
+<script type="text/javascript">
+    $(document).ready(function () {
+        /* Маска на поле Телефон */
+        $("input#phone").mask("+7 (999) 999-99-99");
+    });
+</script>
+
+<%= render 'partial/navbar' %>
+
+<div class="container-fluid">
+  <div class="row">
+    <%= render('partial/sidebar', menu: {active: "партнеры"}) %>
+
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      <ul class="nav nav-tabs">
+        <li><%= link_to 'все партнеры', partners_path %></li>
+        <li><%= link_to 'добавить партнера', new_partner_path %></li>
+        <li class="active"><a href="#">Обновление данных</a></li>
+      </ul>
+      <div class="col-lg-6">
+        <br/>
+        <%= form_for(@partner, :html => {onsubmit: "return checkFealdsPartner()"}) do |f| %>
+            <% if @partner.errors.any? %>
+                <div id="error_explanation">
+                  <h2><%= pluralize(@partner.errors.count, "error") %> prohibited this provider from being saved:</h2>
+
+                  <ul>
+                    <% @partner.errors.full_messages.each do |msg| %>
+                        <li><%= msg %></li>
+                    <% end %>
+                  </ul>
+                </div>
+            <% end %>
+
+            <div id="name" class="form-group"><%= f.text_field :name, class: "form-control", placeholder: "Название*", maxlength: 100 %></div>
+            <div id="contact_name" class="form-group"><%= f.text_field :contact_name, class: "form-control", placeholder: "Контактное лицо*", maxlength: 100 %></div>
+            <div id="phone" class="form-group"><%= f.text_field :phone, class: "form-control", placeholder: "Телефон*", id: "phone" %></div>
+            <div id="address" class="form-group"><%= f.text_field :address, class: "form-control", placeholder: "Адрес*", maxlength: 100 %></div>
+            <div id="comments" class="form-group"><%= f.text_area :comments, class: "form-control", placeholder: "Комментарий", maxlength: 1024, rows: 5 %></div>
+
+
+            <%= f.submit 'Обновить данные', class: "btn btn-primary" %> <%= link_to 'Отмена', partners_path, type: "button", class: "btn btn-default" %>
+
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>

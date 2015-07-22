@@ -1,0 +1,17 @@
+<%= render 'partial/navbar' %>
+<div class="container">
+  <ol class="breadcrumb">
+    <li><a href="#">склад</a></li>
+    <li class="active">ингридиенты</li>
+  </ol>
+
+
+  <div class="row">
+    <div class="col-lg-3">
+      <% #todo добавить sidebar %>
+    </div>
+    <div class="col-lg-9"><div class="well well-lg">В настройках систему не указаны ингридиенты! <br/>
+      Для того что бы добавить новый ингридиент воспользуйтесь кнопкой <%= link_to 'Добавить ингридиент', new_ingredient_url %>.</div>
+    </div>
+  </div>
+</div>

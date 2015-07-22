@@ -1,0 +1,36 @@
+<%= render 'partial/navbar' %>
+<div class="container">
+  <ol class="breadcrumb">
+    <li><a href="#">склад</a></li>
+    <li><a href="/ingredient">ингридиенты</a></li>
+    <li class="active">добавить новый ингридиент</li>
+  </ol>
+
+
+  <div class="row">
+    <div class="col-lg-3">
+      <% #todo добавить sidebar %>
+    </div>
+    <div class="col-lg-9">
+      <%= form_for(@ingredient) do |f| %>
+          <% if @ingredient.errors.any? %>
+              <div id="error_explanation">
+                <% @ingredient.errors.full_messages.each do |msg| %>
+                    <div class="alert alert-success" role="alert"><%= msg %></div>
+                <% end %>
+              </div>
+          <% end %>
+
+          <p><%= f.text_field :name, class: "form-control", placeholder: "Название" %></p>
+
+          <p><%= f.text_field :unit, class: "form-control", placeholder: "Единица измерения" %></p>
+
+          <br/>
+
+          <%= f.submit 'Добавить', class: "btn btn-primary"%>
+
+      <% end %>
+
+    </div>
+  </div>
+</div>
