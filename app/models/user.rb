@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
-  validates_uniqueness_of :login, message: "Такой логин уже существует в системе!"
-
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable, :rememberable, :trackable, :validatable
 end

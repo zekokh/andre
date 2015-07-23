@@ -1,6 +1,9 @@
 Andre::Application.routes.draw do
+  devise_for :users
   root 'login#index'
-  resources :users, :providers, :partners, :ingredients
+
+  get 'home/index', as: 'user_root'
+  resources :providers, :partners, :ingredients
 
   get "depot/index"
   get "login/index"

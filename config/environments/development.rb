@@ -10,7 +10,7 @@ Andre::Application.configure do
   config.eager_load = false
 
   # Show full error reports and disable caching.
-  config.consider_all_requests_local       = true
+  config.consider_all_requests_local = true
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send.
@@ -26,4 +26,8 @@ Andre::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
+
+  # Default_url_options appropriate for a development environment
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
 end
