@@ -35,7 +35,7 @@
             <p> <%= f.collection_select :provider_id, Provider.all, :id, :name, {}, class: "form-control" %></p>
             <p> <%= f.select :unit, [['Килограммы', 'Килограммы'], ['Граммы', 'Граммы'], ['Литры', 'Литры'], ['Штуки', 'Штуки']], {}, class: "form-control" %></p>
 
-            <%= f.submit 'Добавить товар', class: "btn btn-primary" %> <%= link_to 'Отмена', partners_path, type: "button", class: "btn btn-default" %>
+            <%= f.submit 'Обновить', class: "btn btn-primary" %> <%= link_to 'Отмена', partners_path, type: "button", class: "btn btn-default" %>
 
         <% end %>
 

@@ -16,9 +16,12 @@ ActiveRecord::Schema.define(version: 20150722123842) do
   create_table "ingredients", force: true do |t|
     t.string   "name"
     t.string   "unit"
+    t.integer  "provider_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "ingredients", ["provider_id"], name: "index_ingredients_on_provider_id"
 
   create_table "partners", force: true do |t|
     t.string   "name"

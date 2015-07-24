@@ -1,0 +1,36 @@
+<%= render 'partial/navbar' %>
+
+<div class="container-fluid">
+  <div class="row">
+    <%= render('partial/sidebar', menu: {active: "ингридиенты"}) %>
+
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      <ul class="nav nav-tabs">
+        <li><%= link_to 'все товары', ingredients_path %></li>
+        <li><%= link_to 'добавить товар', new_ingredient_path %></li>
+      </ul>
+      <div class="col-lg-6">
+        <br/>
+
+        <% if notice %>
+            <div class="alert alert-success" role="alert"><%= notice %></div>
+        <% end %>
+        <strong>Название:</strong>
+        <%= @ingredient.name %>
+        </p>
+        <p>
+          <strong>Поставщик:</strong>
+          <%= @ingredient.provider.name %>
+        </p>
+        <p>
+          <strong>Единица измерения:</strong>
+          <%= @ingredient.unit %>
+        </p>
+
+        <%= link_to 'Редактировать', edit_ingredient_path(@ingredient) %> |
+        <%= link_to 'Назад', ingredients_path %>
+
+      </div>
+    </div>
+  </div>
+</div>
