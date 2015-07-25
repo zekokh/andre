@@ -20,15 +20,14 @@
         </p>
         <p>
           <strong>Поставщик:</strong>
-          <%= @ingredient.provider.name %>
+          <%= link_to @ingredient.provider.name, @ingredient.provider %>
         </p>
         <p>
           <strong>Единица измерения:</strong>
           <%= @ingredient.unit %>
         </p>
 
-        <%= link_to 'Редактировать', edit_ingredient_path(@ingredient) %> |
-        <%= link_to 'Назад', ingredients_path %>
+        <%= link_to 'Редактировать', edit_ingredient_path(@ingredient) %>
 
       </div>
     </div>

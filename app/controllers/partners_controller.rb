@@ -4,7 +4,7 @@ class PartnersController < ApplicationController
   before_action :admin_role
 
   def index
-    @partners = Partner.all
+    @partners = Partner.page(params[:page]).per(10)
   end
 
   def show

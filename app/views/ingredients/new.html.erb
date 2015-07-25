@@ -1,10 +1,3 @@
-<script type="text/javascript">
-    $(document).ready(function () {
-        /* Маска на поле Телефон */
-        $("input#phone").mask("+7 (999) 999-99-99");
-    });
-</script>
-
 <%= render 'partial/navbar' %>
 
 <div class="container-fluid">
@@ -18,7 +11,7 @@
       </ul>
       <div class="col-lg-6">
         <br/>
-        <%= form_for(@ingredient, :html => {onsubmit: "return checkFealdsPartner()"}) do |f| %>
+        <%= form_for(@ingredient, :html => {onsubmit: "return checkFealdsIngredients()"}) do |f| %>
             <% if @ingredient.errors.any? %>
                 <div id="error_explanation">
                   <h2><%= pluralize(@ingredient.errors.count, "error") %> prohibited this provider from being saved:</h2>

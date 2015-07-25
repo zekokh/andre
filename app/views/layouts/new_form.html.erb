@@ -252,6 +252,30 @@
 
           return flag;
       }
+
+      /* Проверка на пустоту полей для заполнения ингридиент */
+      function checkFealdsIngredients() {
+          var flag = true;
+
+          var name = $('#ingredient_name').val().replace(/\s+/g, '');
+
+
+          /* Телефон */
+          if (name.length == 0) {
+              $('#name').attr('class', 'form-group has-error');
+              $('#ingredient_name').val("")
+              flag = false;
+          } else {
+              $('#name').attr('class', 'form-group');
+              if (flag == false) {
+                  flag = false;
+              } else {
+                  flag = true;
+              }
+          }
+
+          return flag;
+      }
   </script>
 
 </head>

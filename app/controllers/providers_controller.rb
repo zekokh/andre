@@ -3,7 +3,7 @@ class ProvidersController < ApplicationController
   before_action :set_provider, only: [:show, :edit, :update, :destroy]
 
   def index
-    @providers = Provider.all
+    @providers = Provider.page(params[:page]).per(10)
   end
 
   def show
@@ -36,8 +36,11 @@ class ProvidersController < ApplicationController
   end
 
   def destroy
-    @provider.destroy
-    redirect_to providers_url
+   if @provider.destroy
+     redirect_to providers_url
+   else
+     redirect_to providers_url, notice: 'Поставщик не может быть удален! Так как в базе данных есть связанный с ним товар!'
+   end
   end
 
   private

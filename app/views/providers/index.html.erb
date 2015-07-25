@@ -10,6 +10,9 @@
         <li><%= link_to 'добавить поставщика', new_provider_path %></li>
       </ul>
       <br/>
+      <% if notice %>
+          <div class="alert alert-success" role="alert"><%= notice %></div>
+      <% end %>
       <% if @providers.length > 0 %>
           <table class="table table-hover">
             <thead>
@@ -46,7 +49,7 @@
       <% end %>
 
       <br>
-
+      <%= paginate @providers %>
     </div>
   </div>
 </div>

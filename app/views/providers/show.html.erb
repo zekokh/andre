@@ -42,9 +42,29 @@
 
         <% end %>
 
-        <%= link_to 'Редактировать', edit_provider_path(@provider) %> |
-        <%= link_to 'Назад', providers_path %>
+        <%= link_to 'Редактировать', edit_provider_path(@provider) %>
 
+      </div>
+      <div class="col-lg-6">
+        <% if @provider.ingredient.length > 0 %>
+            <table class="table table-hover">
+              <thead>
+              <tr>
+                <th>Товар, который постовляет постовщик</th>
+              </tr>
+              </thead>
+        <% @provider.ingredient.each do |ingredient| %>
+
+                  <tbody>
+                  <td><%= link_to ingredient.name, ingredient %></td>
+
+        <% end %>
+              </tbody>
+            </table>
+        <% else %>
+
+
+        <% end %>
       </div>
     </div>
   </div>
