@@ -1,7 +1,7 @@
-<%= render 'partial/navbar' %>
+<%= render('partial/navbar', navbar: {active: "склад"}) %>
 <div class="container-fluid">
   <div class="row">
-    <%= render('partial/sidebar', menu: {active: "склад"}) %>
+    <%= render('partial/sidebar/depot', menu: {active: "склад"}) %>
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
       <div class="well well-lg">На складе нет товара! <br/>
         Для того что бы отгрузить товар на склад воспользуйтесь кнопкой <a>Приход товара</a>.

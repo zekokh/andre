@@ -9,8 +9,20 @@
       </button>
       <a class="navbar-brand" href="/">Жак-Андре</a>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Заявки</a></li>
+        <li <% if navbar[:active] == "склад" %> class="active"
+            <% end %>><a href="/depot">Склад</a></li>
+        <li <% if navbar[:active] == "производство" %> class="active"
+            <% end %>><a href="/production">Производство</a></li>
+        <li <% if navbar[:active] == "статистика" %> class="active"
+            <% end %>><a href="#">Статистика</a></li>
+      <!--  <li <% if navbar[:active] == "отчеты" %> class="active"
+            <% end %>><a href="#">Отчеты</a></li> -->
+        <li <% if navbar[:active] == "настройки" %> class="active"
+            <% end %>><a href="/users">Настройки</a></li>
         <li class="active"><a href="./"><%= session[:user_name] %> <span class="sr-only">(current)</span></a></li>
         <li> <%= link_to 'выйти', logout_url, method: 'delete' %></li>
       </ul>

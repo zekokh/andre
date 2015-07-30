@@ -1,0 +1,2 @@
+class RoutingCardsController < ApplicationController
+end

@@ -5,16 +5,17 @@
     });
 </script>
 
-<%= render 'partial/navbar' %>
+<%= render('partial/navbar', navbar: {active: "склад"}) %>
 
 <div class="container-fluid">
   <div class="row">
-    <%= render('partial/sidebar', menu: {active: "ингридиенты"}) %>
+    <%= render('partial/sidebar/depot', menu: {active: "ингридиенты"}) %>
 
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
       <ul class="nav nav-tabs">
         <li><%= link_to 'все товары', ingredients_path %></li>
-        <li class="active"><%= link_to 'добавить товар', new_ingredient_path %></li>
+        <li><%= link_to 'добавить товар', new_ingredient_path %></li>
+        <li class="active"><a href="#">Обновление данных</a></li>
       </ul>
       <div class="col-lg-6">
         <br/>
@@ -35,7 +36,7 @@
             <p> <%= f.collection_select :provider_id, Provider.all, :id, :name, {}, class: "form-control" %></p>
             <p> <%= f.select :unit, [['Килограммы', 'Килограммы'], ['Граммы', 'Граммы'], ['Литры', 'Литры'], ['Штуки', 'Штуки']], {}, class: "form-control" %></p>
 
-            <%= f.submit 'Обновить', class: "btn btn-primary" %> <%= link_to 'Отмена', partners_path, type: "button", class: "btn btn-default" %>
+            <%= f.submit 'Обновить', class: "btn btn-primary" %> <%= link_to 'Отмена', ingredients_path, type: "button", class: "btn btn-default" %>
 
         <% end %>
 

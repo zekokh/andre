@@ -5,11 +5,11 @@
     });
 </script>
 
-<%= render 'partial/navbar' %>
+<%= render('partial/navbar', navbar: {active: "настройки"}) %>
 
 <div class="container-fluid">
   <div class="row">
-    <%= render('partial/sidebar', menu: {active: "партнеры"}) %>
+    <%= render('partial/sidebar/settings', menu: {active: "партнеры"}) %>
 
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
       <ul class="nav nav-tabs">

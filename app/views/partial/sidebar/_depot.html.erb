@@ -1,0 +1,14 @@
+<div class="col-sm-3 col-md-2 sidebar">
+  <ul class="nav nav-sidebar">
+   <!-- <li><p>Склад и производство</p></li>
+    <hr/> -->
+    <li
+    <% if menu[:active] == "ингридиенты" %> class="active"
+    <% end %> ><a href="/ingredients">Ингридиенты</a></li>
+    <li
+    <% if menu[:active] == "склад" %> class="active"
+    <% end %> ><a href="/depot">Продукция на складе</a></li>
+    <li><a href="#">Приход продукции</a></li>
+    <li><a href="#">Отгрузка продукции</a></li>
+  </ul>
+</div>

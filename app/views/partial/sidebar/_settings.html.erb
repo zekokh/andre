@@ -1,0 +1,27 @@
+<div class="col-sm-3 col-md-2 sidebar">
+<% if session[:user_role] == "admin" %>
+    <ul class="nav nav-sidebar">
+      <!-- <li><p>Настройки</p></li>
+      <hr/> -->
+      <li
+      <% if menu[:active] == "пользователи" %> class="active"
+      <% end %> ><a href="/users">Пользователи</a></li>
+      <li
+      <% if menu[:active] == "поставщики" %> class="active"
+      <% end %> ><a href="/providers">Поставщики</a></li>
+      <li
+      <% if menu[:active] == "партнеры" %> class="active"
+      <% end %> ><a href="/partners">Партнеры</a></li>
+
+   <!--   <li
+      <% if menu[:active] == "торговые точки" %> class="active"
+      <% end %> ><a href="#">Торговые точки</a></li>
+      <li
+      <% if menu[:active] == "дисконт" %> class="active"
+      <% end %> ><a href="#">Дисконт</a></li>
+      <li
+      <% if menu[:active] == "скидки" %> class="active"
+      <% end %> ><a href="#">Скидки</a></li>-->
+    </ul>
+<% end %>
+</div>

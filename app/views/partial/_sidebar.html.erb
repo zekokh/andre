@@ -1,45 +1,5 @@
 <div class="col-sm-3 col-md-2 sidebar">
-  <% if session[:user_role] == "admin" %>
-      <ul class="nav nav-sidebar">
-        <li><p>Настройки</p></li>
-        <hr/>
-        <li
-        <% if menu[:active] == "пользователи" %> class="active"
-        <% end %> ><a href="/users">Пользователи</a></li>
-        <li
-        <% if menu[:active] == "поставщики" %> class="active"
-        <% end %> ><a href="/providers">Поставщики</a></li>
-        <li
-        <% if menu[:active] == "партнеры" %> class="active"
-        <% end %> ><a href="/partners">Партнеры</a></li>
-        <li
-        <% if menu[:active] == "ингридиенты" %> class="active"
-        <% end %> ><a href="/ingredients">Товары и ингридиенты</a></li>
-        <li
-        <% if menu[:active] == "технологичка" %> class="active"
-        <% end %> ><a href="#">Технологичка</a></li>
-        <li
-        <% if menu[:active] == "торговые точки" %> class="active"
-        <% end %> ><a href="#">Торговые точки</a></li>
-        <li
-        <% if menu[:active] == "дисконт" %> class="active"
-        <% end %> ><a href="#">Дисконт</a></li>
-        <li
-        <% if menu[:active] == "скидки" %> class="active"
-        <% end %> ><a href="#">Скидки</a></li>
-      </ul>
-  <% end %>
-  <ul class="nav nav-sidebar">
-    <li><p>Склад и производство</p></li>
-    <hr/>
-    <li
-    <% if menu[:active] == "склад" %> class="active"
-    <% end %> ><a href="/depot">Продукция на складе</a></li>
-    <li><a href="#">Приход продукции</a></li>
-    <li><a href="#">Отгрузка продукции</a></li>
-    <li><a href="#">Производство</a></li>
-    <li><a href="#">Заявки</a></li>
-  </ul>
+
   <ul class="nav nav-sidebar">
     <li><p>Статистика и отчеты</p></li>
     <hr/>

@@ -1,6 +1,6 @@
 Andre::Application.routes.draw do
   root 'login#index'
-  resources :users, :providers, :partners, :ingredients
+  resources :users, :providers, :partners, :ingredients, :routing_cards
 
   get "depot/index"
   get "login/index"
@@ -18,6 +18,10 @@ Andre::Application.routes.draw do
 
   controller :depot do
     get 'depot' => :index
+  end
+
+  controller :production do
+    get 'production' => :index
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

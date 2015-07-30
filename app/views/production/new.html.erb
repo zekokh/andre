@@ -1,0 +1,13 @@
+<%= render('partial/navbar', navbar: {active: "производство"}) %>
+<div class="container-fluid">
+  <div class="row">
+    <%= render('partial/sidebar/production', menu: {active: "технологичка"}) %>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      <ul class="nav nav-tabs">
+        <li><%= link_to 'все технологички',  %></li>
+        <li class="active"><%= link_to 'добавить технологичку', new_user_path %></li>
+      </ul>
+      <br/>
+    </div>
+  </div>
+</div>

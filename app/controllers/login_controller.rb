@@ -3,7 +3,7 @@ class LoginController < ApplicationController
   skip_before_action :authorize
 
   def index
-    redirect_to home_index_path if User.find_by(id: session[:user][:id])
+    redirect_to home_index_path if User.find_by(id: session[:user][:id]) unless session[:user][:id].nil?
   end
 
   def login
