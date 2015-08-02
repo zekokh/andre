@@ -1,20 +1,16 @@
 Andre::Application.routes.draw do
-  root 'login#index'
+  root 'home#index'
   resources :users, :providers, :partners, :ingredients, :routing_cards
 
   get "depot/index"
-  get "login/index"
-  get "login/login"
-  get "login/destroy"
   get "home/index"
 
-  post 'login' => 'login#login'
-
-  controller :login do
-    get 'login' => :index
-    post 'login' => :login
-    delete 'logout' => :destroy
-  end
+  resources :sessions, only: [:new, :create, :destroy]
+  # controller :sessions do
+  #   get 'sessions' => :index
+  #   post 'sessions' => :sessions
+  #   delete 'logout' => :destroy
+  # end
 
   controller :depot do
     get 'depot' => :index

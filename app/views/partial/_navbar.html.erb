@@ -24,7 +24,7 @@
         <li <% if navbar[:active] == "настройки" %> class="active"
             <% end %>><a href="/users">Настройки</a></li>
         <li class="active"><a href="./"><%= session[:user_name] %> <span class="sr-only">(current)</span></a></li>
-        <li> <%= link_to 'выйти', logout_url, method: 'delete' %></li>
+        <li> <%= link_to 'выйти', session_path(current_user), method: 'delete' %></li>
       </ul>
     </div>
   </div>

@@ -1,5 +1,5 @@
 <div class="col-sm-3 col-md-2 sidebar">
-<% if session[:user_role] == "admin" %>
+<% if current_user.admin? %>
     <ul class="nav nav-sidebar">
       <!-- <li><p>Настройки</p></li>
       <hr/> -->

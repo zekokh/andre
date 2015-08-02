@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :admin_role
+  helper_method :user
+  before_action :admin_user?
   layout 'new_form'
 
   def index
@@ -28,33 +28,36 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user.update(user_params)
-      redirect_to @user, notice: 'Данные пользователя успешно обновленны!'
+    if user.update_attributes(user_params)
+      redirect_to user_path(user), notice: 'Данные пользователя успешно обновленны!'
     else
       render action: 'edit'
     end
   end
 
   def destroy
-    @user.destroy
-    redirect_to users_url
+    if user.destroy
+      redirect_to users_url
+    else
+      #todo redirect with error
+    end
   end
 
   private
   # Use callbacks to share common setup or constraints between actions.
-  def set_user
-    @user = User.find(params[:id])
+  def user
+    @user ||= User.find(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def user_params
-    params.require(:user).permit(:firstName, :lastName, :login, :password, :birthday, :phone, :role)
+    params.require(:user).permit(:firstName, :lastName, :sessions, :password, :birthday, :phone, :role)
   end
 
   protected
 
-  #To check user role
-  def admin_role
-    redirect_to home_index_url, notice: "У Вас не достаточно прав, обратитесь к администратору системы!" if session[:user_role] == "user"
+  def admin_user?
+    return if current_user.admin?
+    redirect_to home_index_path, notice: "У Вас не достаточно прав, обратитесь к администратору системы!"
   end
 end

@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 20150722123842) do
   create_table "users", force: true do |t|
     t.string   "firstName"
     t.string   "lastName"
-    t.string   "login"
+    t.string   "sessions"
     t.string   "password"
     t.string   "birthday"
     t.string   "phone"

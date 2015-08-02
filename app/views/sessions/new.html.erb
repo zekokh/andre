@@ -1,6 +1,6 @@
 <div class="container">
 
-  <%= form_tag("/login", method: "post", class: 'form-signin') do %>
+  <%= form_tag("/sessions", method: "post", class: 'form-signin') do %>
       <% if flash[:alert] %>
           <div class="alert alert-danger"> <%= flash[:alert] %> </div>
       <% end %>

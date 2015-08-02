@@ -6,8 +6,8 @@ class LoginControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should get login" do
-    get :login
+  test "should get sessions" do
+    get :sessions
     assert_response :success
   end
 

@@ -69,11 +69,11 @@
 
           /* Логин */
           if (login.length == 0) {
-              $('div#login').attr('class', 'form-group has-error');
+              $('div#sessions').attr('class', 'form-group has-error');
               $('#user_login').val("")
               flag = false;
           } else {
-              $('div#login').attr('class', 'form-group');
+              $('div#sessions').attr('class', 'form-group');
               if (flag == false) {
                   flag = false;
               } else {
