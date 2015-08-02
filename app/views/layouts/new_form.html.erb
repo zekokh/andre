@@ -4,12 +4,15 @@
   <title>Система автоматизации</title>
   <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
   <%= stylesheet_link_tag "dashboard", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag "chosen", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "bootstrap", "data-turbolinks-track" => true %>
+
   <%= javascript_include_tag "maskedinput.min", "data-turbolinks-track" => true %>
   <%= stylesheet_link_tag "bootstrap-datetimepicker.min", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "moment-with-locales.min", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "bootstrap-datetimepicker.min", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "chosen.jquery", "data-turbolinks-track" => true %>
+
   <%= csrf_meta_tags %>
 
   <script type="text/javascript">
@@ -69,11 +72,11 @@
 
           /* Логин */
           if (login.length == 0) {
-              $('div#sessions').attr('class', 'form-group has-error');
+              $('div#login').attr('class', 'form-group has-error');
               $('#user_login').val("")
               flag = false;
           } else {
-              $('div#sessions').attr('class', 'form-group');
+              $('div#login').attr('class', 'form-group');
               if (flag == false) {
                   flag = false;
               } else {

@@ -1,8 +1,7 @@
 class ApplicationController < ActionController::Base
   helper_method :current_user
   protect_from_forgery with: :exception
-
-  before_action :authorize
+  before_action :user_signed_in?
 
 
   def current_user
@@ -12,7 +11,7 @@ class ApplicationController < ActionController::Base
   #Check logged user
   protected
 
-  def authorize #todo change to predicate #user_signed_in?
+  def user_signed_in?
     return if current_user
     redirect_to new_session_path, notice: "Пожалуйста, пройдите авторизацию!"
   end
